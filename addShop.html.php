@@ -46,9 +46,9 @@
         <input type='text' class="form-control"name='K'required="true"><br>
         </div>
         <input type='submit' name='S' class="btn btn-primary" value='Stworz'><br>
-        <?php include 'footer.html.php'?>
+        
     </form>
     </div>
-    
+    <?php include 'footer.html.php'?>
 </body>
 </html>

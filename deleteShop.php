@@ -15,7 +15,7 @@ try{
     $smpt = $pdo->prepare($sql);
     $smpt->bindValue(':id',$shopId);
     $smpt->execute();
-    header('location:dbfunctions.php');
+    header('location:shop.php');
     
 }catch(PDOException $e){
     echo 'nie udalo sie. '.$e -> getMessage().' in '.$e->getFile().' on '.$e->getLine();
