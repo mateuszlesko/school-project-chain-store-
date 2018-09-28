@@ -7,7 +7,7 @@ $pdo = null;
     $shops = [];
     try{
         include 'connection.php';
-    $sql = "Select Miasto, Ulica, Wojewodztwo, ID from sklep";    
+    $sql = "Select Miasto, Ulica, Wojewodztwo, ID, Kontakt from sklep";    
     $result = $pdo->query($sql);
         while($row = $result->fetch()){
             $shops[]=array('Miasto'=>$row['Miasto'],'Ulica'=>$row['Ulica'],'Wojewodztwo'=>$row['Wojewodztwo'],'ID'=>$row['ID']);
@@ -40,6 +40,8 @@ $pdo = null;
         $output.="</div>";
         $output.="<form action='updateShop.html.php' method='get'>";
         $output.="<input type='hidden' name='ShopID' class='btn btn-primary' value=".$s['ID'].">";
+        $output.="<input type='hidden' name='ShopTown' class='btn btn-primary' value=".$s['Miasto'].">";
+        $output.="<input type='hidden' name='ShopStreet' class='btn btn-primary' value=".str_replace(" ","",htmlspecialchars($s['Ulica'],ENT_QUOTES)).">";
         $output.="<input type='submit' class='btn ' value='Edytuj'>";
         $output.="</form>";
         $output.="</div>";
