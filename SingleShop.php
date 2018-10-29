@@ -2,22 +2,18 @@
 
 $details = [];
 
-include 'connection.php';
-$id = $_GET['ShopID'];
-$sql = "Select * from sklep where ID=$id;";
-$result = $pdo->query($sql);
+function getShop($pdo,$id){
+    $query = $pdo->prepare("Select * from sklep where ID=:id;");
+    $query->bindValue(':id',$id);
+    $query->execute();
+    return $query->fetch();
+    }
+    
+    include 'connection.php';
+    $q = getShop($pdo,$_GET['ShopID']);
+   
 
 
-
-while($row=$result->fetch()){
-$details[]=array('ID'=>$id,
-'Kontakt'=>$row['Kontakt'],
-'Miasto'=>$row['Miasto'],
-'Nazwa sklepu'=>$row['Nazwa sklepu'],
-'Ulica'=>$row['Ulica'],
-'Wojewodztwo'=>$row['Wojewodztwo']
-);
-}
 include 'single.html.php';
 
 

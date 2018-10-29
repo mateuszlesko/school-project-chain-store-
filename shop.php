@@ -7,10 +7,10 @@ $pdo = null;
     $shops = [];
     try{
         include 'connection.php';
-    $sql = "Select Miasto, Ulica, Wojewodztwo, ID from sklep";    
+    $sql = "Select Miasto, Ulica, Wojewodztwo, ID, Kontakt from sklep";    
     $result = $pdo->query($sql);
         while($row = $result->fetch()){
-            $shops[]=array('Miasto'=>$row['Miasto'],'Ulica'=>$row['Ulica'],'Wojewodztwo'=>$row['Wojewodztwo'],'ID'=>$row['ID']);
+            $shops[]=array('Miasto'=>$row['Miasto'],'Ulica'=>$row['Ulica'],'Wojewodztwo'=>$row['Wojewodztwo'],'Kontakt'=>$row['Kontakt'],'ID'=>$row['ID']);
         }
 
     }catch(PDOException $e){
@@ -18,6 +18,7 @@ $pdo = null;
     }
     rsort($shops);
     foreach($shops as $s ){
+        ob_start();
         $output.="<div class='container'>";
         $output.="<div class='row align-items-center'>";
         $output.="<div class='col'>";
@@ -40,11 +41,15 @@ $pdo = null;
         $output.="</div>";
         $output.="<form action='updateShop.html.php' method='get'>";
         $output.="<input type='hidden' name='ShopID' class='btn btn-primary' value=".$s['ID'].">";
+        $output.="<input type='hidden' name='ShopTown' class='btn btn-primary' value=".$s['Miasto'].">";
+        $output.="<input type='hidden' name='ShopContact' class='btn btn-primary' value=".$s['Kontakt'].">";
+        $output.="<input type='hidden' name='ShopStreet' class='btn btn-primary' value=".str_replace(" ","",htmlspecialchars($s['Ulica'],ENT_QUOTES)).">";
         $output.="<input type='submit' class='btn ' value='Edytuj'>";
         $output.="</form>";
         $output.="</div>";
         $output.="</div>";
         $output.="</div>";
+        
     }
 
     include 'new2.html.php';

@@ -17,29 +17,29 @@
 </div>
 
 <div class="container">
-<?php foreach($details as $d):?>
+
   <div class="row">
     <div class="col-sm-4">
-      <h3><?php echo $d['Nazwa sklepu']?></h3>
+      <h3><?php echo $q['Nazwa sklepu']?></h3>
       <p>Najlepsze usługi informatyczne w twoim miescie</p>
       <p>Gwarantowana wysoka jakosc</p>
       
     </div>
     <div class="col-sm-4">
       <h3>Adres</h3>
-      <p><?php echo $d['Wojewodztwo']?>,<?php echo $d['Miasto']?> <?php echo $d['Ulica']?></p>
-      <input type='hidden' value="<?php $d['Miasto'];?>" name='A'>
+      <p><?php echo $q['Wojewodztwo']?>,<?php echo $q['Miasto']?> <?php echo $q['Ulica']?></p>
+      <input type='hidden' value="<?php $q['Miasto'];?>" name='A'>
     </div>
     <div class="col-sm-4">
       <h3>Kontakt</h3>        
-      <p>Nr tel:<?php echo $d['Kontakt']?></p>
+      <p>Nr tel:<?php echo $q['Kontakt']?></p>
       
     </div>
-    <?php endforeach?>
+   
    <?php echo $_GET['ShopID'];?>
   </div>
 
 </div>
-<?php include 'footer.html.php';?>
+
 </body>
 </html>

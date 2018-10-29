@@ -5,13 +5,14 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </head>
 <?php
-//dokoncz formularz i skrypt php
-function getOrder($o){
 $price = 0;
 $nameOfOrder = '';
 $name = $_POST['M']; 
 $surname = $_POST['N'];
 $email = $_POST['E'];
+//dokoncz formularz i skrypt php
+function getOrder($o){
+
 $date = date('d.M.Y h:i');
     switch($o){
         case 1:
@@ -37,16 +38,21 @@ $date = date('d.M.Y h:i');
         break;
 
     }
-    
-    echo "<ul class='list-group'>
-    <li class='list-group-item active'>Zamowienie: $name $surname </li>
-    <li class='list-group-item'>Zlecona usluga: $nameOfOrder</li>
-    <li class='list-group-item'>Data zlozenia zamowienia: $date</li>
-    <li class='list-group-item'>Email na ktory skontaktujemy sie: $email </li>
-    <li class='list-group-item'>Cena zamowienia: $price zl</li>
-    
-  </ul>";
+    include 'connection.php';
+    $sql = 
+  
+}
+function seeOrder(){
+  echo "<ul class='list-group'>
+  <li class='list-group-item active'>Zamowienie: $name $surname </li>
+  <li class='list-group-item'>Zlecona usluga: $nameOfOrder</li>
+  <li class='list-group-item'>Data zlozenia zamowienia: $date</li>
+  <li class='list-group-item'>Email na ktory skontaktujemy sie: $email </li>
+  <li class='list-group-item'>Cena zamowienia: $price zl</li>
+  
+</ul>";
 }
 getOrder($_POST['W']);
+seeOrder();
 
 ?>

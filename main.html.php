@@ -40,7 +40,7 @@
                     <a href="addShop.html.php">Stworz sklep</a>
                 </li>
                 <li>
-                    <a href="dbfunctions.php">Nasze sklepy</a>
+                    <a href="shop.php">Nasze sklepy</a>
                 </li>
                 
             </ul>

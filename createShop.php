@@ -19,16 +19,13 @@ try{
         'M'=>$M,
         'U'=>$U,
         'K'=>$K));
-        header('location:dbfunctions.php');
+        header('location:shop.php');
         
     
 }catch(PDOException $e){
     die();
     echo 'nie udalo sie. '.$e -> getMessage().' in '.getFile().' on '.$e->getLine();
     
-}
-function query($pdo,$params=[]){
-
 }
 include 'addShop.html.php';
 ?>
